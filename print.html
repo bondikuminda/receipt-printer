@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Printing...</title>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const order = params.get("order") || "0000";
+    const total = params.get("total") || "0.00";
+
+    const receipt = `Order: ${order}\nTotal: $${total}\n\nThank you!\n\n`;
+    const rawbtUri = "rawbt:" + encodeURIComponent(receipt);
+
+    // Print twice
+    window.location.href = rawbtUri;
+    setTimeout(() => window.location.href = rawbtUri, 2000);
+    setTimeout(() => window.location.href = "about:blank", 4000);
+  </script>
+</head>
+<body>
+  <p>Printing receipt...</p>
+</body>
+</html>
